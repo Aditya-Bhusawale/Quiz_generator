@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Generate Quiz</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        🤖 AI Quiz Generator
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Quiz Settings</h1>
+
+<p class="subtitle">
+
+Choose how you want AI to generate your quiz.
+
+</p>
+
+<form action="/generate" method="POST">
+
+<label>
+
+<i class="fa-solid fa-book"></i>
+
+Topic
+
+</label>
+
+<input
+type="text"
+name="topic"
+placeholder="Example: Deadlock"
+required>
+
+<label>
+
+<i class="fa-solid fa-layer-group"></i>
+
+Difficulty
+
+</label>
+
+<select name="difficulty">
+
+<option value="Easy">Easy</option>
+
+<option value="Medium" selected>Medium</option>
+
+<option value="Hard">Hard</option>
+
+</select>
+
+<label>
+
+<i class="fa-solid fa-list-ol"></i>
+
+Number of Questions
+
+</label>
+
+<select name="num_questions">
+
+<option>5</option>
+<option selected>10</option>
+<option>15</option>
+<option>20</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Generate Quiz
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+Powered by Flask • LangChain • ChromaDB • Groq
+
+</div>
+
+</body>
+
+</html>

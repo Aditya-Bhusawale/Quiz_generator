@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Quiz Generator</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <div class="navbar">
+
+        <div class="logo">
+            🤖 AI Quiz Generator
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Generate AI Powered Quizzes</h1>
+
+            <p class="subtitle">
+                Upload your study PDF and let AI create intelligent
+                multiple-choice quizzes instantly.
+            </p>
+
+            <form
+                action="/upload"
+                method="POST"
+                enctype="multipart/form-data">
+
+                <label class="file-upload">
+
+                    <i class="fa-solid fa-file-pdf"
+                        style="font-size:70px;color:#2563eb;"></i>
+
+                    <br><br>
+
+                    <h2>Select PDF</h2>
+
+                    <br>
+
+                    <input
+                        type="file"
+                        name="pdf"
+                        accept=".pdf"
+                        required>
+
+                </label>
+
+                <button type="submit">
+
+                    <i class="fa-solid fa-upload"></i>
+
+                    Upload PDF
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        AI Quiz Generator • Flask • LangChain • ChromaDB • Groq
+
+    </div>
+
+</body>
+
+</html>

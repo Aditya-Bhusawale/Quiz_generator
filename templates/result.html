@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        🤖 AI Quiz Generator
+    </div>
+
+</div>
+
+<div class="container">
+
+    <!-- Score Card -->
+
+    <div class="score-card">
+
+        {% set percentage = ((score / total) * 100) | round(1) %}
+
+        <h1>Quiz Completed 🎉</h1>
+
+        <br>
+
+        <div class="score">
+
+            {{ percentage }}%
+
+        </div>
+
+        <br>
+
+        <h2>
+
+            {{ score }} / {{ total }}
+
+        </h2>
+
+        <br>
+
+        {% if percentage >= 80 %}
+
+            <h2 style="color:#16a34a;">
+                🌟 Excellent Work!
+            </h2>
+
+        {% elif percentage >= 60 %}
+
+            <h2 style="color:#f59e0b;">
+                👍 Good Job!
+            </h2>
+
+        {% else %}
+
+            <h2 style="color:#ef4444;">
+                📚 Keep Practicing!
+            </h2>
+
+        {% endif %}
+
+    </div>
+
+    <br><br>
+
+    <h1>Answer Review</h1>
+
+    {% for r in results %}
+
+    <div class="result">
+
+        <h3>
+
+            Question {{ loop.index }}
+
+        </h3>
+
+        <p>
+
+            <strong>{{ r.question }}</strong>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <strong>Your Answer:</strong>
+
+            {% if r.user_answer %}
+                {{ r.user_answer }}
+            {% else %}
+                Not Answered
+            {% endif %}
+
+        </p>
+
+        <p>
+
+            <strong>Correct Answer:</strong>
+
+            {{ r.correct_answer }}
+
+        </p>
+
+        <br>
+
+        {% if r.correct %}
+
+            <p class="correct">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Correct
+
+            </p>
+
+        {% else %}
+
+            <p class="wrong">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                Incorrect
+
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/finish">
+
+        <button>
+
+            <i class="fa-solid fa-house"></i>
+
+            Finish
+
+        </button>
+
+    </a>
+
+</div>
+
+<div class="footer">
+
+Made with ❤️ using Flask • LangChain • ChromaDB • Groq
+
+</div>
+
+</body>
+
+</html>

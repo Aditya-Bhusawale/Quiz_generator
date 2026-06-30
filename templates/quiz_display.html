@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Quiz</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        🤖 AI Quiz Generator
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h1>AI Generated Quiz</h1>
+
+<p class="subtitle">
+
+Answer all the questions before submitting.
+
+</p>
+
+<form action="/submit" method="POST">
+
+{% for q in questions %}
+
+<div class="question-card">
+
+<h3>
+
+Question {{ loop.index }}
+
+</h3>
+
+<p style="font-size:18px;margin-bottom:20px;">
+
+<strong>{{ q.question }}</strong>
+
+</p>
+
+<label class="option">
+
+<input
+type="radio"
+name="q{{ loop.index0 }}"
+value="A"
+required>
+
+{{ q.option_a }}
+
+</label>
+
+<label class="option">
+
+<input
+type="radio"
+name="q{{ loop.index0 }}"
+value="B">
+
+{{ q.option_b }}
+
+</label>
+
+<label class="option">
+
+<input
+type="radio"
+name="q{{ loop.index0 }}"
+value="C">
+
+{{ q.option_c }}
+
+</label>
+
+<label class="option">
+
+<input
+type="radio"
+name="q{{ loop.index0 }}"
+value="D">
+
+{{ q.option_d }}
+
+</label>
+
+</div>
+
+{% endfor %}
+
+<button type="submit">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Submit Quiz
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+AI Quiz Generator • Good Luck 🚀
+
+</div>
+
+</body>
+
+</html>
